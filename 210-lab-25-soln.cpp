@@ -155,12 +155,21 @@ int main() {
     }
 
     string labels[] = {"Read", "Sort", "Insert", "Delete"};
+    cout << "Number of simulation: " << RUNS << endl;
     cout << setw(W1) << "Operation" << setw(W1) << "Vector" << setw(W1) << "List"
          << setw(W1) << "Set" << endl;
+    
     for (int i = 0; i < 4; i++) {
         cout << setw(W1) << labels[i];
-        for (int j = 0; j < COLS; j++) 
-            cout << setw(W1) << results[i][j];
+        for (int j = 0; j < COLS; j++) {
+            int total_time = 0;
+            double avg_time = 0;
+            for (int run = 0; run < RUNS; run++) {
+                total_time += results[run][i][j];
+            }
+            avg_time = total_time/RUNS;
+            cout << setw(W1) << avg_time;
+        }
         cout << endl;
     }
     
