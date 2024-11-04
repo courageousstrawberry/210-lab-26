@@ -14,12 +14,14 @@ const int ROWS = 4, COLS = 3, RUNS = 15;
 const int W1 = 10;
 
 int main() {
+    // 3D array to store the values of each race after 15 runs
     int results[RUNS][ROWS][COLS];
     string cd;
     vector<string> data_vector;
     list<string> data_list;
     set<string> data_set;
 
+    // Loop through each race 15 times
     for (int run = 0; run < RUNS; run++) {
         // testing for READ operations
         for (int i = 0; i < STRUCTURES; i++) {
@@ -159,15 +161,19 @@ int main() {
     cout << setw(W1) << "Operation" << setw(W1) << "Vector" << setw(W1) << "List"
          << setw(W1) << "Set" << endl;
     
+    // Loop through each time calculated in the 3D array
     for (int i = 0; i < 4; i++) {
         cout << setw(W1) << labels[i];
         for (int j = 0; j < COLS; j++) {
             int total_time = 0;
             double avg_time = 0;
             for (int run = 0; run < RUNS; run++) {
+                // Add up the total time for the associated race
                 total_time += results[run][i][j];
             }
+            // Get the average of the time
             avg_time = total_time/RUNS;
+            // Print the average time for the specific race
             cout << setw(W1) << avg_time;
         }
         cout << endl;
